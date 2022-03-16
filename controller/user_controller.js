@@ -29,15 +29,25 @@ module.exports.create = function (req, res) {
       return;
     }
     if (!user) {
-      User.create(req.body, function (err, user) {
-        console.log(req.body);
-        if (err) {
-          console.log("error is creating the user while signing up");
-          console.log("******", err);
-          return;
+      User.create(
+        {
+          email: req.body.email,
+          firstName: req.body.firstName,
+          lastName: req.body.lastName,
+          isAdmin: false,
+          subscriptionStatus: 0,
+          password: req.body.password,
+        },
+        function (err, user) {
+          console.log(req.body);
+          if (err) {
+            console.log("error is creating the user while signing up");
+            console.log("******", err);
+            return;
+          }
+          return res.redirect("/users/sign-in");
         }
-        return res.redirect("/users/sign-in");
-      });
+      );
     } else {
       return res.redirect("back");
     }

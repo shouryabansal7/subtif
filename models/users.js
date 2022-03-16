@@ -19,9 +19,11 @@ const UserSchema = new Schema({
   },
   isAdmin: {
     type: Boolean,
+    required: true,
   },
   subscriptionStatus: {
     type: Number,
+    required: true,
   },
   subscriptions: [
     {
@@ -45,6 +47,7 @@ const UserSchema = new Schema({
   previousBalance: {
     type: Number,
     default: 0,
+    required: true,
   },
   payments: [
     {
