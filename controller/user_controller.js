@@ -1,12 +1,18 @@
-const User = require("../models/User");
+const User = require("../models/users");
 
 module.exports.SignIn = function (req, res) {
+  if (req.isAuthenticated()) {
+    return res.redirect("/users/profile");
+  }
   return res.render("user_sign_in", {
     title: "Amico | Sign In",
   });
 };
 
 module.exports.SignUp = function (req, res) {
+  if (req.isAuthenticated()) {
+    return res.redirect("/users/profile");
+  }
   return res.render("user_sign_up", {
     title: "Amico | Sign Up",
   });
@@ -24,8 +30,10 @@ module.exports.create = function (req, res) {
     }
     if (!user) {
       User.create(req.body, function (err, user) {
+        console.log(req.body);
         if (err) {
           console.log("error is creating the user while signing up");
+          console.log("******", err);
           return;
         }
         return res.redirect("/users/sign-in");
@@ -39,8 +47,17 @@ module.exports.create = function (req, res) {
 //to Sign In
 module.exports.createSession = function (req, res) {
   //TODO
+  return res.redirect("/");
 };
 
 module.exports.profile = function (req, res) {
-  return res.end("<h1>User Profile</h1>");
+  return res.render("user_profile", {
+    title: "Profile",
+    user: req.user,
+  });
+};
+
+module.exports.destroySession = function (req, res) {
+  req.logout();
+  return res.redirect("/");
 };
