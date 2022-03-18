@@ -1,5 +1,23 @@
 <nav>
   <div class="nav-wrapper cyan container-fluid">
     <a href="/" class="brand-logo center">DailyFoodSubscription</a>
+    <% if(locals.user){ %> <% if(locals.user.isAdmin){ %>
+    <ul id="nav-mobile" class="left hide-on-small">
+      <li><a href="/admin">Admin Dashboard</a></li>
+    </ul>
+    <ul id="nav-mobile" class="right hide-on-small">
+      <li><a href="/users/sign-out">Logout</a></li>
+    </ul>
+    <% }else{ %>
+    <ul id="nav-mobile" class="left hide-on-small">
+      <li><a href="/dashboard">Dashboard</a></li>
+    </ul>
+    <ul id="nav-mobile" class="left hide-on-small">
+      <li><a href="/leaves">Leaves</a></li>
+    </ul>
+    <ul id="nav-mobile" class="right hide-on-small">
+      <li><a href="/users/sign-out">Logout</a></li>
+    </ul>
+    <% } %> <% } %>
   </div>
 </nav>
