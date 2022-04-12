@@ -76,3 +76,27 @@ module.exports.payment = (req, res) => {
     });
   });
 };
+
+module.exports.getHolidays = (req, res) => {
+  details.getHolidays({}).then((holidays) =>
+    res.render("holidays", {
+      holidays: holidays,
+      currentDate: details.getCurrentDate(),
+    })
+  );
+};
+
+module.exports.addHolidays = (req, res) => {
+  if (req.body.date && req.body.title && req.body.description) {
+    details.addHolidays(req.body.date, req.body.title, req.body.description);
+  }
+  res.redirect("/admin/holidays");
+};
+
+module.exports.deleteHolidays = (req, res) => {
+  console.log("Holiday ID", req.body.holidayId);
+  if (req.body.holidayId) {
+    details.deleteHoliday(req.body.holidayId);
+  }
+  res.redirect("/admin/holidays");
+};

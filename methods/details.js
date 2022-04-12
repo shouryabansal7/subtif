@@ -90,8 +90,8 @@ module.exports = {
   getCurrentDate: function () {
     return moment().format("YYYY-MM-DD");
   },
-  deleteHoliday: function (holidayId) {
-    Holidays.findOne({ _id: holidayId }).remove().exec();
+  deleteHoliday: async function (holidayId) {
+    await Holidays.deleteMany({ _id: holidayId });
     return true;
   },
   getExpenses: function (month) {

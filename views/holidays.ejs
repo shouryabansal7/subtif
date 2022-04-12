@@ -47,9 +47,13 @@
             <td><%= holiday.date %></td>
             <td><%= holiday.description %></td>
             <td>
-              <form action="/admin/holidays?_method=DELETE" method="post">
+              <form action="/admin/holidays/delete" method="post">
                 <input type="hidden" name="_method" value="DELETE" />
-                <input type="hidden" name="holidayId" value="{{ _id }}" />
+                <input
+                  type="hidden"
+                  name="holidayId"
+                  value="<%= holiday._id %>"
+                />
                 <input type="submit" class="btn red" value="Delete" />
               </form>
             </td>
