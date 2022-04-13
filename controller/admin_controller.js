@@ -111,6 +111,7 @@ module.exports.getExpense = (req, res) => {
     res.render("expense", {
       monthList: monthList,
       expenses: expenses,
+      currentDate: details.getCurrentDate(),
     });
   });
 };
