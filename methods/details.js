@@ -129,11 +129,13 @@ module.exports = {
           ],
         },
       ];
+      console.log(user);
       if (!user) {
         new User({
           email: email,
           firstName: firstName,
           lastName: lastName,
+          password: "12345",
           isAdmin: false,
           subscriptionStatus: 4,
           subscriptions: subscriptions,

@@ -31,10 +31,10 @@
       <h5 class="center">Manage Leave</h5>
       <div class="container">
         <form action="/admin/manage-guests/leaves" method="post">
-          <input type="hidden" name="userID" value="{{ userDetails._id }}" />
+          <input type="hidden" name="userID" value="<%= userDetails._id %>" />
           <div class="row">
             <div class="input-field">
-              <input type="date" name="date" value="{{ currentDate }}" />
+              <input type="date" name="date" value="<%= currentDate %>" />
             </div>
           </div>
           <div class="row">
