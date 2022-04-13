@@ -33,14 +33,14 @@
             <td><%= guest.email %></td>
             <td><%= guest.amount %></td>
             <td>
-              <a href="/admin/manage-guests/leaves/{{ _id }}"
+              <a href="/admin/manage-guests/leaves/<%= guest._id %>"
                 ><input type="button" class="btn" value="Leaves"
               /></a>
             </td>
             <td>
-              <form action="/admin/manage-guests?_method=DELETE" method="post">
+              <form action="/admin/manage-guests/delete" method="post">
                 <input type="hidden" name="_method" value="DELETE" />
-                <input type="hidden" name="userID" value="{{ _id }}" />
+                <input type="hidden" name="userID" value="<%= guest._id %>" />
                 <input type="submit" class="btn red" value="Delete" />
               </form>
             </td>

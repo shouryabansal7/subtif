@@ -4,7 +4,7 @@
     <div class="col s12 m3 center">
       <div class="z-depth-5 card blue-grey darken-1">
         <div class="card-image">
-          <img src="{{ user.image }}" class="circle responsive-img" alt="" />
+          <img src="https://avatars.dicebear.com/api/avataaars/:seed7.svg" class="circle responsive-img" alt="" />
         </div>
         <div class="card-action">
           <span class="card-title white-text flow-text"
@@ -14,17 +14,17 @@
       </div>
     </div>
     <div class="col s12 m5 center">
-      <!-- <div class="white darken-3 input-field col s12">
+      <div class="white darken-3 input-field col s12">
         <select class="dashboard-month-selector">
           <option value="" disabled selected>Change Month</option>
-          {{#each monthList}}
-          <option value="{{ value }}">{{ text }}</option>
-          {{else}}
-          <option value="" disabled selected>Year ends</option>
-          {{/each}}
+        <% if(monthList){ %> <% for(month of monthList){ %>
+        <option value="<%= month.value %>"><%= month.text %></option>
+        <% } %><% }else{ %>
+        <option value="" disabled selected>Year ends</option>
+        <% } %>
         </select>
-      </div> -->
-      <!-- <br /><br /><br /><br />
+      </div>
+      <br /><br /><br /><br />
       <div class="z-depth-5 card blue-grey">
         <div class="card-content">
           <div class="card-title white-text">Leaves</div>
@@ -37,21 +37,21 @@
               </tr>
             </thead>
             <tbody>
-              {{#each leaveList}}
-              <tr>
-                <td>{{ date }}</td>
-                <td>{{ lunch }}</td>
-                <td>{{ dinner }}</td>
-              </tr>
-              {{else}}
-              <tr>
-                <td colspan="3" class="center">No Leave applied yet</td>
-              </tr>
-              {{/each}}
+              <% if(leaveList){ %> <% for(leave of leaveList){ %>
+                <tr>
+                  <td><%= leave.date %></td>
+                  <td><%= leave.lunch %></td>
+                  <td><%= leave.dinner %></td>
+                </tr>
+                <% } %><% }else{ %>
+                <tr>
+                  <td colspan="3" class="center">No Leave applied yet</td>
+                </tr>
+                <% } %>
             </tbody>
           </table>
         </div>
-      </div> -->
+      </div>
     </div> 
       <div class="col s12 m4 center">
         <div class="z-depth-5 card blue-grey darken-1">

@@ -109,8 +109,8 @@ module.exports = {
     }
     new Expenses(newExpense).save();
   },
-  deleteExpense: function (expenseId) {
-    Expenses.findOne({ _id: expenseId }).remove().exec();
+  deleteExpense: async function (expenseId) {
+    await Expenses.deleteMany({ _id: expenseId });
     return true;
   },
   getGuests: function () {

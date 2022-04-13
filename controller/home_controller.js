@@ -19,6 +19,7 @@ module.exports.forMonth = function (req, res) {
 
       // let lunchPrice =
 
+      console.log("month", month);
       res.render("dashboard", {
         month: month,
         // totalLunchPrice: totalLunchPrice,
@@ -36,8 +37,9 @@ module.exports.monthLeaves = function (req, res) {
     const monthList = leaves.getMonthList();
     const month = leaves.getMonth(req.params.month);
     const dateList = leaves.getDateList(month.value);
-    // console.log(dateList);
+    console.log(dateList);
     const leaveList = dashboard.getLeaveFormatted(user.leaves);
+    console.log(leaveList);
     res.render("leaves", {
       month: month,
       monthList: monthList,

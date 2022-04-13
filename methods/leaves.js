@@ -23,6 +23,7 @@ module.exports = {
     }
   },
   submitLeave: function (req, res, redirectURL) {
+    console.log(req);
     if (
       req.body.month &&
       req.body.month > 0 &&
@@ -61,6 +62,7 @@ module.exports = {
             }
           }
           user.leaves = leaves;
+          console.log("leaves", leaves);
           if (!leaveExist && (lunch || dinner)) {
             user.leaves.push({
               date: momentObj.valueOf(),
